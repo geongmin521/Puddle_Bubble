@@ -65,6 +65,12 @@ public class SoundManager : MonoBehaviour
         sfxSource.PlayOneShot(clipToPlay);
     }
 
+    public void PlayGatleingSFX(string clipName)
+    {
+        AudioClip clipToPlay = sfxClipList.Find(clip => clip.name == clipName);
+        sfxSource.PlayOneShot(clipToPlay);
+    }
+
     public void StopSFX()
     {
         sfxSource.Stop();

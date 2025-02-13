@@ -58,7 +58,7 @@ public class Weapon : MonoBehaviour
             else
             {
                 bullet.GetComponent<GatlingBullet>().moveVec = shootDirection;
-                SoundManager.Instance.PlaySFX("SFX_Getling");
+                SoundManager.Instance.PlayGatleingSFX("SFX_Getling");
             }
             
             lastAttackTime = Time.time;
