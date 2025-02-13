@@ -40,7 +40,7 @@ public class Monster : MonoBehaviour
         switch (Grade)
         {
             case MonsterGrade.Speed:
-                Speed *= 1.2f;
+                Speed *= 2;
                 spriteRenderer.color = new Color(1f, 1f, 0f);
                 break;
             case MonsterGrade.Defense:

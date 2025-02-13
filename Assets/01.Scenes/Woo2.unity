@@ -543,7 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1142,7 +1142,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1300050763}
   - {fileID: 218144260}
@@ -1200,9 +1200,31 @@ MonoBehaviour:
   - {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   - {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
   - {fileID: 5681206147338470250, guid: 7b09fa07f9a89864d86c780696398872, type: 3}
-  waveIntervalMin: 0
-  waveIntervalMax: 5
+  monsterList4:
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  - {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
+  waveIntervalMin: 15
+  waveIntervalMax: 20
   monsterSpawnInterval: 0.3
+  sleeptime: 0
   waveParent: {fileID: 736501600}
 --- !u!1 &495826801
 GameObject:
@@ -1906,6 +1928,12 @@ MonoBehaviour:
   sandMonsterPrefab: {fileID: 4503117100781503756, guid: f8449f4bab74e3f4f86a7ef7070aac4a, type: 3}
   stoneMonsterPrefab: {fileID: 4503117100781503756, guid: 1a89fb7ec4f26e048abfecfa21768a20, type: 3}
   monsterType: 0
+  elitePercent: 1
+  SpeedPercent: 5
+  DefensePercent: 5
+  addelitePercent: 1
+  addSpeedPercent: 5
+  addDefensePercent: 5
   spawnParent: {fileID: 1759533214}
 --- !u!1 &722791358
 GameObject:
@@ -2197,7 +2225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3731,7 +3759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4114,10 +4142,22 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2134160341}
+    - target: {fileID: 420418380320945245, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: attackCoolTime
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1239341788704886775, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2134160341}
+    - target: {fileID: 1239341788704886775, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: ammoPerShot
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239341788704886775, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: attackCoolTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2573723944559386963, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4158,10 +4198,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3782478031102491407, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2134160341}
+    - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: ammoPerShot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: attackCoolTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5554078349437546793, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4210,7 +4262,8 @@ PrefabInstance:
       propertyPath: hpImageArray.Array.data[4]
       value: 
       objectReference: {fileID: 621143851}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2871191915395765188, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

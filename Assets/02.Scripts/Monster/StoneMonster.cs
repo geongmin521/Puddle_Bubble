@@ -11,8 +11,8 @@ public class StoneMonster : Monster
         anim = GetComponent<Animator>();
 
         Type = MonsterType.Stone;
-        Speed = 200;
-        Health = 300;
+        Speed = 500;
+        Health = 50;
         Size = 1f;
         AttackPower = 1;
         base.Start();

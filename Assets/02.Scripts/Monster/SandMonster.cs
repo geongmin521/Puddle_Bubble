@@ -11,8 +11,8 @@ public class SandMonster : Monster
         anim = GetComponent<Animator>();
 
         Type = MonsterType.Sand;
-        Speed = 300;
-        Health = 500;
+        Speed = 800;
+        Health = 100;
         Size = 1f;
         AttackPower = 1;
         base.Start();

@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2573723944559386963}
   - component: {fileID: 8430426302234981185}
-  - component: {fileID: 2871191915395765188}
+  - component: {fileID: 6926331229874806564}
   - component: {fileID: 3782478031102491407}
   - component: {fileID: 8467033543817572898}
   - component: {fileID: 2042370702046525587}
@@ -176,42 +176,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &2871191915395765188
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5554078349437546793}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
---- !u!70 &3782478031102491407
+--- !u!70 &6926331229874806564
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,7 +209,42 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 0.2, y: 0.5}
+  m_Direction: 0
+--- !u!70 &3782478031102491407
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554078349437546793}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.2, y: 0.5}
   m_Direction: 0
 --- !u!114 &8467033543817572898
 MonoBehaviour:
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+  invincibilityTime: 2
   currentPlayerState: 0
   mainWeaponType: 0
   subWeaponType: 1
@@ -289,8 +290,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc4183707e19ff44916c17bfefc6a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testUIKey: 0
-  stopPannelUI: {fileID: 0}
+  miusHpSprite: {fileID: 0}
+  hpImageArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mainAmmoImage: {fileID: 0}
+  subAmmoImage: {fileID: 0}
+  mainAmmoText: {fileID: 0}
+  subAmmoText: {fileID: 0}
+  currentWeaponText: {fileID: 0}
 --- !u!114 &3116701136358026160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackKey: 323
-  changeKey: 32
   loadingCheakTime: 3
   isLoadable: 0
 --- !u!114 &5130644761788833762

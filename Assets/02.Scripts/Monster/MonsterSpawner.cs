@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,13 @@ public class MonsterSpawner : MonoBehaviour
     float spawnIntervalMax = 5f;
     float spawnOffset = 100f;
 
+    public int elitePercent = 1;
+    public int SpeedPercent = 5;
+    public int DefensePercent = 5;
+
+    public int addelitePercent = 1;
+    public int addSpeedPercent = 5;
+    public int addDefensePercent = 5;
     private float nextSpawnTime;
 
     public Transform spawnParent; // 생성된 몬스터들의 부모(Parent)
@@ -27,6 +35,7 @@ public class MonsterSpawner : MonoBehaviour
     void Start()
     {
         nextSpawnTime = Time.time + Random.Range(spawnIntervalMin, spawnIntervalMax);
+        StartCoroutine(GradePercentUpdate());
     }
 
     void Update()
@@ -69,7 +78,25 @@ public class MonsterSpawner : MonoBehaviour
         if (monster != null)
         {
             // 등급 랜덤 설정
-            MonsterGrade randomGrade = (MonsterGrade)Random.Range(0, 4);
+            int whatGrade = Random.Range(0, 100);
+            MonsterGrade randomGrade;
+            if (whatGrade < elitePercent)
+            {
+                randomGrade = MonsterGrade.Elite;
+            }
+            else if (whatGrade < elitePercent + SpeedPercent)
+            {
+                randomGrade = MonsterGrade.Speed;
+            }
+            else if (whatGrade < elitePercent + SpeedPercent + DefensePercent)
+            {
+                randomGrade = MonsterGrade.Defense;
+            }
+            else
+            {
+                randomGrade = MonsterGrade.Normal;
+            }
+
             monster.Grade = randomGrade;
 
             // 등급별 가중치 적용
@@ -78,7 +105,14 @@ public class MonsterSpawner : MonoBehaviour
         }
         else { return; }
     }
-
+    IEnumerator GradePercentUpdate() //20초마다 등급 업그레이드
+    {
+        elitePercent += addelitePercent;
+        DefensePercent += addDefensePercent;
+        SpeedPercent += addSpeedPercent;
+        yield return new WaitForSeconds(20);
+        StartCoroutine(GradePercentUpdate());
+    }
     private Vector3 GetRandomOffScreenPosition()
     {
         Vector3 camPosition = mainCamera.transform.position;

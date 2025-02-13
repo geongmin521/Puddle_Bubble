@@ -12,8 +12,8 @@ public class MudMonster : Monster
 
         Type = MonsterType.Mud;
         Speed = 600;
-        Health = 100;
-        Size = 1f;
+        Health = 300;
+        Size = 2f;
         AttackPower = 1;
         base.Start();
     }

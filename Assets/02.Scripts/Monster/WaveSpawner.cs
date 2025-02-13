@@ -8,31 +8,31 @@ public class WaveSpawner : MonoBehaviour
     public List<GameObject> monsterList1;
     public List<GameObject> monsterList2;
     public List<GameObject> monsterList3;
+    public List<GameObject> monsterList4;
 
     public float waveIntervalMin = 15f; // 웨이브 최소 대기 시간
     public float waveIntervalMax = 20f; // 웨이브 최대 대기 시간
     public float monsterSpawnInterval = 0.7f; // 몬스터 개별 스폰 간격
-
+    public float sleeptime = 30;// 초반에 웨이브가 나오기에는 몬스터가 너무 많아서 초반에는 재우기
     private List<List<GameObject>> allMonsterLists; // 모든 리스트 저장할 리스트
     public Transform waveParent;                    // 생성된 몬스터들의 부모(Parent)
 
     void Start()
     {
         // 모든 몬스터 리스트를 하나의 리스트에 저장
-        allMonsterLists = new List<List<GameObject>> { monsterList1, monsterList2, monsterList3 };
+        allMonsterLists = new List<List<GameObject>> { monsterList1, monsterList2, monsterList3, monsterList4 };
 
         StartCoroutine(SpawnMonsterRoutine());
     }
 
     IEnumerator SpawnMonsterRoutine()
     {
+        yield return new WaitForSeconds(sleeptime);
         while (true)
         {
             float waitTime = Random.Range(waveIntervalMin, waveIntervalMax);
             yield return new WaitForSeconds(waitTime);
-
-            // `yield return`을 사용하여 웨이브가 끝날 때까지 대기
-            yield return StartCoroutine(SpawnMonsters());
+            StartCoroutine(SpawnMonsters());
         }
     }
 
@@ -57,8 +57,8 @@ public class WaveSpawner : MonoBehaviour
             if (monster != null)
             {
                 // 등급 랜덤 설정
-                MonsterGrade randomGrade = (MonsterGrade)Random.Range(0, 4);
-                monster.Grade = randomGrade;
+                //MonsterGrade randomGrade = (MonsterGrade)Random.Range(0, 4);
+                monster.Grade = MonsterGrade.Normal; //웨이브에서는 노말나오게 변경
 
                 // 등급별 가중치 적용
                 monster.ApplyGradeModifiers();

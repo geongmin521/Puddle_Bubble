@@ -107,11 +107,6 @@ MonoBehaviour:
   Health: 0
   Size: 0
   AttackPower: 0
-  GradeSprite:
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   anim: {fileID: 7241418873964135217}
 --- !u!58 &8764246179708702121
 CircleCollider2D:
