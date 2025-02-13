@@ -32,6 +32,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (Player.Instance.isDie == true)
+        {
+            moveSpeed = 0;
+            return;
+        }
+          
         GetInput();
         Move();
     }

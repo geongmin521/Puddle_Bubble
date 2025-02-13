@@ -13,8 +13,7 @@ public class Weapon : MonoBehaviour
     public int currentAmmo;          // 잔여 탄약 수
     public int maxAmmo;              // 최대 탄약 수
     public float attackCoolTime;     // 발사 주기
-    public int ramainStep;           // 장전 스텝
-    public float ramainSpeed;        // 장전 주기
+    public int ramainSpeed = 1;        // 장전 속도
 
     [Header("Assets")]
     public GameObject bulletPrefab;      // 총알 프리팹
@@ -25,6 +24,10 @@ public class Weapon : MonoBehaviour
     private Vector3 mousePos;            // 마우스 위치
     private float lastAttackTime = 0f;   // 마지막 공격 시간
 
+    private void Start()
+    {
+        ramainSpeed = 1;
+    }
     // 공격
     public virtual void Attack()
     {
@@ -68,25 +71,26 @@ public class Weapon : MonoBehaviour
     }
 
     // 장전
-    public void Loading()
+    public void Loading(PubbleContorl pubble)
     {
-        StartCoroutine(LoadingCo());
+        StartCoroutine(LoadingCo(pubble));
         SoundManager.Instance.PlaySFX("SFX_Loading");
     }
 
-    IEnumerator LoadingCo()
+    IEnumerator LoadingCo(PubbleContorl pubble)
     {
-        while (Player.Instance.isLoading)
+        if (pubble.curBubble >= ramainSpeed)         
         {
-            currentAmmo += ramainStep;
-            yield return new WaitForSeconds(ramainSpeed);
-            if(currentAmmo >= maxAmmo)
+            if (currentAmmo <= maxAmmo)
             {
-                currentAmmo = maxAmmo;
-                yield return null;
+                pubble.curBubble -= ramainSpeed;
+                currentAmmo += ramainSpeed;
+                PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo, maxAmmo);
             }
-            PlayerUIManager.Instance.UpdateMainAmmoUI(currentAmmo, maxAmmo);
-        }
+        } 
+        yield return new WaitForSeconds(0.05f);
+        if (Player.Instance.isLoading == true)
+            StartCoroutine(LoadingCo(pubble));
     }
 
     // 탄창버림

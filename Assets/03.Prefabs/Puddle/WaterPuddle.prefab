@@ -166,5 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 2
-  maxBubble: 0
+  maxBubble: 100
   curBubble: 0
+  addBubble: 1

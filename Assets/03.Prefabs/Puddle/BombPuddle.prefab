@@ -82,8 +82,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
-  maxBubble: 0
+  maxBubble: 100
   curBubble: 0
+  addBubble: 1
 --- !u!1 &5905343176455913323
 GameObject:
   m_ObjectHideFlags: 0

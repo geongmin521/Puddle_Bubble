@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerBattleManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PlayerBattleManager : MonoBehaviour
     [SerializeField] int loadingCheakTime = 3;
     private float currentCheakTime;
     public bool isLoadable;
+    public Animator ani;
 
     // component
     private Bomb bomb;
@@ -27,7 +30,10 @@ public class PlayerBattleManager : MonoBehaviour
 
     private void Update()
     {
-        AttackCall();
+        if (Player.Instance.isDie == true)
+            return;
+        if (!EventSystem.current.IsPointerOverGameObject())
+            AttackCall();
     }
 
     // 탄창 변경
@@ -96,12 +102,13 @@ public class PlayerBattleManager : MonoBehaviour
     }
 
     // 재장전 명령 (탄창체크 -> 장전)
-    private void LoadingCall(PubbleState state)
+    private void LoadingCall(PubbleContorl pubble)
     {
+        PubbleState state = pubble.state;
         switch (state)
         {
-            case PubbleState.bomb:
-                if (Player.Instance.mainWeaponType != Player.WeaponType.Bomb)
+            case PubbleState.bomb: //물웅덩이의 상태인거같고//음 이거 생각이랑 많이 다른데? 
+                if (Player.Instance.mainWeaponType != Player.WeaponType.Bomb) // 현재 메인무기의 종류에 따라 다르게 처리하는듯? 
                 {
                     if(Player.Instance.mainWeaponType == Player.WeaponType.Water)
                     {
@@ -114,7 +121,7 @@ public class PlayerBattleManager : MonoBehaviour
                     Player.Instance.mainWeaponType = Player.WeaponType.Bomb;
                     PlayerUIManager.Instance.UpdateCurrentWeaponUI("폭탄");
                 }
-                bomb.Loading();
+                bomb.Loading(pubble);
                 break;
             case PubbleState.water:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Water)
@@ -130,7 +137,7 @@ public class PlayerBattleManager : MonoBehaviour
                     Player.Instance.mainWeaponType = Player.WeaponType.Water;
                     PlayerUIManager.Instance.UpdateCurrentWeaponUI("대물총");
                 }
-                water.Loading();
+                water.Loading(pubble);
                 break;
             case PubbleState.gatling:
                 if (Player.Instance.mainWeaponType != Player.WeaponType.Getling)
@@ -146,7 +153,7 @@ public class PlayerBattleManager : MonoBehaviour
                     Player.Instance.mainWeaponType = Player.WeaponType.Getling;
                     PlayerUIManager.Instance.UpdateCurrentWeaponUI("게틀링");
                 }
-                getling.Loading();
+                getling.Loading(pubble);
                 break;
             default:
                 Debug.Log("여기오면 안되어용");
@@ -166,9 +173,10 @@ public class PlayerBattleManager : MonoBehaviour
             {
                 if (Player.Instance.currentPlayerState == Player.PlayerState.Idle)
                 {
-                    isLoadable = true;  // 이거 안씀
+                    //isLoadable = true;  // 이거 안씀
                     Player.Instance.isLoading = true;
-                    LoadingCall(collision.gameObject.GetComponent<PubbleContorl>().state);
+                    ani.SetBool("isLoading", true); ;
+                    LoadingCall(collision.gameObject.GetComponent<PubbleContorl>());
                 }
             }
         }
@@ -179,5 +187,6 @@ public class PlayerBattleManager : MonoBehaviour
         currentCheakTime = 0;
         isLoadable = false; // 이거안씀
         Player.Instance.isLoading = false;
+        ani.SetBool("isLoading", false);
     }
 }
