@@ -1407,6 +1407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 417596352}
+  - component: {fileID: 417596353}
   m_Layer: 0
   m_Name: '*------ Map -------*'
   m_TagString: Untagged
@@ -1430,6 +1431,56 @@ Transform:
   - {fileID: 237472090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &417596353
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417596351}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4326477, y: 57.841297}
+      - {x: -58.96225, y: 57.032825}
+      - {x: -56.33425, y: -55.180077}
+      - {x: 55.938984, y: -57.450603}
+      - {x: 55.99496, y: 58.239826}
+  m_UseDelaunayMesh: 0
 --- !u!4 &421086495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8100860649183652602, guid: f74df1564eba0b446834a4d271e030bc, type: 3}
@@ -3067,7 +3118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ConfineMode: 0
   m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 0}
+  m_BoundingShape2D: {fileID: 417596353}
   m_ConfineScreenEdges: 1
   m_Damping: 0
 --- !u!114 &943169526
@@ -3935,7 +3986,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 200
 --- !u!222 &1134048268
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5993,12 +6044,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 172110381}
     m_Modifications:
     - target: {fileID: 420418380320945245, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: maxAmmo
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 420418380320945245, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2134160341}
     - target: {fileID: 420418380320945245, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: currentAmmo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 420418380320945245, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: attackCoolTime
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239341788704886775, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: maxAmmo
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1239341788704886775, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: mainCamera
@@ -6061,12 +6124,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: maxAmmo
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 2134160341}
     - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: ammoPerShot
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
+      propertyPath: currentAmmo
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5130644761788833762, guid: 8bb797d9069d4c245980fcaab5b85b1e, type: 3}
       propertyPath: attackCoolTime
