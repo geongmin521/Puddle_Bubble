@@ -72,6 +72,23 @@ public class WaterBullet : MonoBehaviour
             life--;
         }
 
+        if (collision.gameObject.CompareTag("StoneMonster"))
+        {
+            StoneMonster mudMonster = collision.gameObject.GetComponent<StoneMonster>();
+            int mosterHP = mudMonster.GetHealth();
+            if (remainDamage >= mosterHP)
+            {
+                mudMonster.TakeDamage(mosterHP);
+                remainDamage -= mosterHP;
+            }
+            else
+            {
+                mudMonster.TakeDamage(remainDamage);
+                remainDamage = 0;
+            }
+            life--;
+        }
+
         if (life <= 0 || remainDamage == 0)
         {
             collider2D.enabled = false;

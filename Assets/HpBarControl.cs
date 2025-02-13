@@ -11,11 +11,15 @@ public class HpBarControl : MonoBehaviour
     {
         monster = this.transform.parent.parent.GetComponent<Monster>();
         rect = GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(0, 0.1f);
         maxHp = monster.Health;
     }
 
     void Update()
     {
-        rect.sizeDelta = new Vector2(monster.Health/maxHp,0.1f);
+        if (monster.Health < maxHp)
+        {
+            rect.sizeDelta = new Vector2(monster.Health / maxHp, 0.1f);
+        }       
     }
 }

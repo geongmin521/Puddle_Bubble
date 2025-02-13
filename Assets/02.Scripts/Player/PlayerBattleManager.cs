@@ -32,7 +32,7 @@ public class PlayerBattleManager : MonoBehaviour
     {
         if (Player.Instance.isDie == true)
             return;
-        if (!EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject() == false)
             AttackCall();
     }
 
